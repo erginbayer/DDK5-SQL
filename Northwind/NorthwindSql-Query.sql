@@ -1,4 +1,4 @@
---Supplierları ad sırasına göre (A-Z) listele companyName
+﻿--Supplierları ad sırasına göre (A-Z) listele companyName
 --Select CompanyName from Suppliers Order By CompanyName ASC;
 
 --Supplierları ad sırasına göre tersten listele (Z-A) companyName
