@@ -11,17 +11,16 @@ namespace northwindSQL_CSharp.Manager
 {
     internal class ProductManager
     {
+
         public List<Product> GetAllSuppliers()
         {
             List<Product> products = new List<Product>();
 
             using (SqlConnection sqlConnection = new SqlConnection(Connection.connectionString))
             {
-
                 try
                 {
                     sqlConnection.Open();
-
 
                     SqlCommand cmd = new SqlCommand("select * from Products", sqlConnection);
 
@@ -53,7 +52,9 @@ namespace northwindSQL_CSharp.Manager
             }
         }
 
-        #region //1) Dışarıdan decimal minimum ve maximum price alan ve onlara uygun ürünleri bana dönen metot.
+        #region 27 April Questions
+
+        #region 1) Dışarıdan decimal minimum ve maximum price alan ve onlara uygun ürünleri bana dönen metot.
 
         public List<Product> GetMinOrMaxProduct(decimal minimum, decimal maximum)
         {
@@ -94,7 +95,7 @@ namespace northwindSQL_CSharp.Manager
         }
         #endregion
 
-        #region //2) Stokta olmayan(stok sayısı 0) olan ürünleri bana dönen metot.
+        #region 2) Stokta olmayan(stok sayısı 0) olan ürünleri bana dönen metot.
         public List<Product> GetFinishedStocksProduct()
         {
             List<Product> products = new List<Product>();
@@ -131,8 +132,8 @@ namespace northwindSQL_CSharp.Manager
             }
         }
         #endregion
-        
-        //3) Dışarıdan name alan ve aldığı name değerindeki ürünleri arayıp bana dönen metot.
+
+        #region 3) Dışarıdan name alan ve aldığı name değerindeki ürünleri arayıp bana dönen metot.
         public List<Product> GetSearchName(string name)
         {
             List<Product> products = new List<Product>();
@@ -168,7 +169,9 @@ namespace northwindSQL_CSharp.Manager
                 }
             }
         }
-        #region //4) Ürünlerin ortalama fiyatını bana veren metot.
+        #endregion
+
+        #region 4) Ürünlerin ortalama fiyatını bana veren metot.
 
         public decimal GetAvgPriceofProducts()
         {
@@ -193,7 +196,8 @@ namespace northwindSQL_CSharp.Manager
         }
         #endregion
 
-        //5) Dışarıdan CategoryId alan ve o categoryId e ait ürünlerin ortalama fiyatını bana dönen metot.
+        #region 5) Dışarıdan CategoryId alan ve o categoryId e ait ürünlerin ortalama fiyatını bana dönen metot.
+        
         public decimal GetAvgSearchCategoryId(int categoryId)
         {
             using (SqlConnection sqlConnection = new SqlConnection(Connection.connectionString))
@@ -223,5 +227,8 @@ namespace northwindSQL_CSharp.Manager
 
             }
         }
+        #endregion
+        #endregion
+
     }
 }
