@@ -17,6 +17,71 @@ namespace northwindSQL_CSharp.Manager
         {
             singletonDBConnection = SingletonDBConnection.getDbConnection();
         }
+        public List<Product> MapSqlDataToProducts(SqlDataReader sqlDataReader)
+        {
+            List<Product> products = new List<Product>();
+            while (sqlDataReader.Read())
+            {
+                Product product = new Product();
+
+                product.Id = Convert.ToInt32(sqlDataReader["ProductID"]);
+                product.ProductName = sqlDataReader["ProductName"].ToString();
+                product.UnitPrice = Convert.ToDecimal(sqlDataReader["UnitPrice"]);
+                product.UnitsInStock = Convert.ToInt32(sqlDataReader["UnitsInStock"]);
+                product.CategoryId = Convert.ToInt32(sqlDataReader["CategoryID"]);
+
+                products.Add(product);
+            }
+            return products;
+        }
+        public List<Product> GetAllProduct()
+        {
+            SqlConnection connection = singletonDBConnection.GetOpenDbConnection();
+            SqlCommand command = new SqlCommand("Select * From Products", connection);
+            var reader = command.ExecuteReader();
+
+            List<Product> products = MapSqlDataToProducts(reader);
+
+            connection.Close();
+
+            return products;
+        }
+        public List<Product> GetProduct(string query)
+        {
+            SqlConnection connection = singletonDBConnection.GetOpenDbConnection();
+            SqlCommand command = new SqlCommand(query, connection);
+            var reader = command.ExecuteReader();
+
+            List<Product> products = MapSqlDataToProducts(reader);
+
+            connection.Close();
+
+            return products;
+        }
+        //public List<Product> GetAllProducts()
+        //{
+        //    List<Product> products = new List<Product>();
+        //    SqlConnection connection = singletonDBConnection.GetOpenDbConnection();
+
+        //    SqlCommand command = new SqlCommand("Select * From Products", connection);
+        //    var reader = command.ExecuteReader();
+
+        //    while (reader.Read())
+        //    {
+        //        Product product = new Product();
+
+        //        product.Id = Convert.ToInt32(reader["ProductID"]);
+        //        product.ProductName = reader["ProductName"].ToString();
+        //        product.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
+        //        product.UnitsInStock = Convert.ToInt32(reader["UnitsInStock"]);
+        //        product.CategoryId = Convert.ToInt32(reader["CategoryID"]);
+
+        //        products.Add(product);
+        //    }
+        //    connection.Close();
+        //    return products;
+
+        //}
 
         //public List<Product> GetAllProducts()
         //{
@@ -57,30 +122,6 @@ namespace northwindSQL_CSharp.Manager
 
         //    }
         //}
-        public List<Product> GetAllProducts()
-        {
-            List<Product> products = new List<Product>();
-            SqlConnection connection = singletonDBConnection.GetOpenDbConnection();
-
-            SqlCommand command = new SqlCommand("Select * From Products", connection);
-            var reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                Product product = new Product();
-
-                product.Id = Convert.ToInt32(reader["ProductID"]);
-                product.ProductName = reader["ProductName"].ToString();
-                product.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
-                product.UnitsInStock = Convert.ToInt32(reader["UnitsInStock"]);
-                product.CategoryId = Convert.ToInt32(reader["CategoryID"]);
-
-                products.Add(product);
-            }
-            connection.Close();
-            return products;
-
-        }
 
         #region 27 April Questions
 
