@@ -31,9 +31,19 @@ namespace northwindSQL_CSharp
             }
         }
 
+        public static void supplierSort(List<Supplier> suppliers)
+        {
+            foreach (var supplier in suppliers)
+            {
+                Console.WriteLine("ID: " + supplier.Id + "\nCompany Name: " + supplier.CompanyName + "\nAddress: "
+                    + supplier.Address + "\nCity: " + supplier.City);
+                Console.WriteLine("-----------------------------------------");
+            }
+        }
 
         static void Main(string[] args)
         {
+            #region SQL Sample
             //string connectionString = "Server=94.73.145.4;Database=u9751868_db9EC;User Id=u9751868_user9EC;Password=PWtw68S5BRcg01S;";
 
             //SqlConnection connection = new SqlConnection(connectionString);
@@ -50,29 +60,20 @@ namespace northwindSQL_CSharp
             //}
             //Console.Read();
             //connection.Close();
-
+            #endregion
 
             ProductManager productManager = new ProductManager();
             SupplierManager supplierManager = new SupplierManager();
             OrderManager orderManager = new OrderManager();
 
-       
-
-            var products = productManager.GetAllProducts();
-            productSort(products);
-
-            //Console.WriteLine("-----------------------------------------");
-            //foreach (var supplier in suppliers)
-            //{
-            //    Console.WriteLine("ID: " + supplier.Id + "\nCompany Name: " + supplier.CompanyName + "\nAddress: " 
-            //        + supplier.Address + "\nCity: " + supplier.City);
-            //    Console.WriteLine("-----------------------------------------");
-            //}
 
 
+            //var allProducts = productManager.GetAllProducts();
+            //var getGermanyOrders = orderManager.GetCountryGermanyOrders();
             //var allOrders = orderManager.GetAllOrders();
-            //orderSort(allOrders);
-            //Console.WriteLine(allOrders.Count);
+            var allSuppliers = supplierManager.GetAllSuppliers();
+            supplierSort(allSuppliers);
+            
 
 
             #region 27 April Questions Test

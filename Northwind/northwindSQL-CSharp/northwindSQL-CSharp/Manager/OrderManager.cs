@@ -46,5 +46,33 @@ namespace northwindSQL_CSharp.Manager
             return orders;
 
         }
+        public List<Order> GetCountryGermanyOrders()
+        {
+            List<Order> orders = new List<Order>();
+            SqlConnection connection = singletonDBConnection.GetOpenDbConnection();
+
+            SqlCommand command = new SqlCommand("Select * From Orders Where ShipCountry = 'Germany' ", connection);
+
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Order order = new Order();
+
+                order.OrderId = Convert.ToInt32(reader["OrderID"]);
+                order.EmployeeId = Convert.ToInt32(reader["EmployeeID"]);
+                order.OrderDate = Convert.ToDateTime(reader["OrderDate"]);
+                order.RequiredDate = Convert.ToDateTime(reader["RequiredDate"]);
+                order.Freight = Convert.ToDecimal(reader["Freight"]);
+                order.ShipCity = reader["ShipCity"].ToString();
+                order.ShipCountry = reader["ShipCountry"].ToString();
+
+                orders.Add(order);
+            }
+
+            connection = singletonDBConnection.GetCloseDbConnection();
+            return orders;
+
+        }
     }
 }

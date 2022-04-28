@@ -11,48 +11,75 @@ namespace northwindSQL_CSharp.Manager
 {
     internal class SupplierManager
     {
+        public SingletonDBConnection singletonDBConnection;
+
+        public SupplierManager()
+        {
+            singletonDBConnection = SingletonDBConnection.getDbConnection();
+        }
+
+        //public List<Supplier> GetAllSuppliers()
+        //{
+        //    List<Supplier> suppliers = new List<Supplier>();
+
+        //    using (SqlConnection sqlConnection = new SqlConnection(Connection.connectionString))
+        //    {
+        //        try
+        //        {
+        //            sqlConnection.Open();
+
+        //            SqlCommand cmd = new SqlCommand("select * from Suppliers", sqlConnection);
+
+        //            var reader = cmd.ExecuteReader();
+
+        //            while (reader.Read())
+        //            {
+        //                Supplier supplier = new Supplier();
+
+        //                supplier.Id = Convert.ToInt32(reader["SupplierID"]);
+        //                supplier.CompanyName = reader["CompanyName"].ToString();
+        //                supplier.ContactName = reader["ContactName"].ToString();
+        //                supplier.Address = reader["Address"].ToString();
+        //                supplier.City = reader["City"].ToString();
+
+        //                suppliers.Add(supplier);
+
+        //            }
+        //            sqlConnection.Close();
+
+        //            return suppliers;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return suppliers;
+        //        }
+        //    }
+        //}
 
         public List<Supplier> GetAllSuppliers()
         {
             List<Supplier> suppliers = new List<Supplier>();
+            SqlConnection connection = singletonDBConnection.GetOpenDbConnection();
 
-            using (SqlConnection sqlConnection = new SqlConnection(Connection.connectionString))
+            SqlCommand command = new SqlCommand("select * from Suppliers", connection);
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
             {
+                Supplier supplier = new Supplier();
 
-                try
-                {
-                    sqlConnection.Open();
+                supplier.Id = Convert.ToInt32(reader["SupplierID"]);
+                supplier.CompanyName = reader["CompanyName"].ToString();
+                supplier.ContactName = reader["ContactName"].ToString();
+                supplier.Address = reader["Address"].ToString();
+                supplier.City = reader["City"].ToString();
 
-
-                    SqlCommand cmd = new SqlCommand("select * from Suppliers", sqlConnection);
-
-                    var reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        Supplier supplier = new Supplier();
-
-                        supplier.Id = Convert.ToInt32(reader["SupplierID"]);
-                        supplier.CompanyName = reader["CompanyName"].ToString();
-                        supplier.ContactName = reader["ContactName"].ToString();
-                        supplier.Address = reader["Address"].ToString();
-                        supplier.City = reader["City"].ToString();
-
-                        suppliers.Add(supplier);
-
-                    }
-
-
-                    sqlConnection.Close();
-
-                    return suppliers;
-                }
-                catch (Exception ex)
-                {
-                    return suppliers;
-                }
+                suppliers.Add(supplier);
 
             }
+            connection.Close();
+
+            return suppliers;
         }
     }
 }
