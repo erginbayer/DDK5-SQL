@@ -20,6 +20,18 @@ namespace northwindSQL_CSharp
                 Console.WriteLine("-----------------------------------------");
             }
         }
+
+        public static void orderSort(List<Order> orders)
+        {
+            foreach (var order in orders)
+            {
+                Console.WriteLine("Order ID: " + order.OrderId + "\nEmloyee ID: " + order.EmployeeId + "\nOrder Date: " + order.OrderDate
+                    + "\nRequired Date: " + order.RequiredDate + "\nFreight: " + order.Freight + "\nShip City: " + order.ShipCity + "\nShipCountry: " + order.ShipCountry);
+                Console.WriteLine("-----------------------------------------");
+            }
+        }
+
+
         static void Main(string[] args)
         {
             //string connectionString = "Server=94.73.145.4;Database=u9751868_db9EC;User Id=u9751868_user9EC;Password=PWtw68S5BRcg01S;";
@@ -42,11 +54,12 @@ namespace northwindSQL_CSharp
 
             ProductManager productManager = new ProductManager();
             SupplierManager supplierManager = new SupplierManager();
+            OrderManager orderManager = new OrderManager();
 
-            //var product = productManager.GetAllSuppliers(); 
-            //productSort(product);
+       
 
-            //var suppliers = supplierManager.GetAllProducts();
+            var products = productManager.GetAllProducts();
+            productSort(products);
 
             //Console.WriteLine("-----------------------------------------");
             //foreach (var supplier in suppliers)
@@ -56,20 +69,27 @@ namespace northwindSQL_CSharp
             //    Console.WriteLine("-----------------------------------------");
             //}
 
-            #region 1.Soru Test
+
+            //var allOrders = orderManager.GetAllOrders();
+            //orderSort(allOrders);
+            //Console.WriteLine(allOrders.Count);
+
+
+            #region 27 April Questions Test
+            #region 1.Question Test
             //var productCount = productManager.GetMinOrMaxProduct(10, 50);
 
             //productSort(productCount);
             #endregion
 
-            #region 2.Soru Test
+            #region 2.Question Test
 
             //var product = productManager.GetFinishedStocksProduct();
 
             //productSort(product);
             #endregion
 
-            #region 3.Soru Test
+            #region 3.Question Test
 
             //var product = productManager.GetSearchName("Ch");
 
@@ -77,16 +97,17 @@ namespace northwindSQL_CSharp
 
             #endregion
 
-            #region 4.Soru Test
+            #region 4.Question Test
 
             //Console.WriteLine(productManager.GetAvgPriceofProducts());
             #endregion
 
-            #region 5.Soru Test
+            #region 5.Question Test
 
-            var product = productManager.GetAvgSearchCategoryId(1);
+            //var product = productManager.GetAvgSearchCategoryId(1);
 
-            Console.WriteLine(product);
+            //Console.WriteLine(product);
+            #endregion
             #endregion
 
             Console.ReadLine();

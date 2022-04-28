@@ -47,8 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Env\Connection.cs" />
+    <Compile Include="Env\SingletonDBConnection.cs" />
+    <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\ProductManager.cs" />
     <Compile Include="Manager\SupplierManager.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Program.cs" />

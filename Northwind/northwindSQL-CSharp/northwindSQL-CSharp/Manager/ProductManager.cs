@@ -11,45 +11,75 @@ namespace northwindSQL_CSharp.Manager
 {
     internal class ProductManager
     {
+        public SingletonDBConnection singletonDBConnection;
 
-        public List<Product> GetAllSuppliers()
+        public ProductManager()
+        {
+            singletonDBConnection = SingletonDBConnection.getDbConnection();
+        }
+
+        //public List<Product> GetAllProducts()
+        //{
+        //    List<Product> products = new List<Product>();
+
+        //    using (SqlConnection sqlConnection = new SqlConnection(Connection.connectionString))
+        //    {
+        //        try
+        //        {
+        //            sqlConnection.Open();
+
+        //            SqlCommand cmd = new SqlCommand("select * from Products", sqlConnection);
+
+        //            var reader = cmd.ExecuteReader();
+
+        //            while (reader.Read())
+        //            {
+        //                Product product = new Product();
+
+        //                product.Id = Convert.ToInt32(reader["ProductID"]);
+        //                product.ProductName = reader["ProductName"].ToString();
+        //                product.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
+        //                product.UnitsInStock = Convert.ToInt32(reader["UnitsInStock"]);
+        //                product.CategoryId = Convert.ToInt32(reader["CategoryID"]);
+
+        //                products.Add(product);
+
+        //            }
+
+        //            sqlConnection.Close();
+
+        //            return products;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw;
+        //        }
+
+        //    }
+        //}
+        public List<Product> GetAllProducts()
         {
             List<Product> products = new List<Product>();
+            SqlConnection connection = singletonDBConnection.GetOpenDbConnection();
 
-            using (SqlConnection sqlConnection = new SqlConnection(Connection.connectionString))
+            SqlCommand command = new SqlCommand("Select * From Products", connection);
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
             {
-                try
-                {
-                    sqlConnection.Open();
+                Product product = new Product();
 
-                    SqlCommand cmd = new SqlCommand("select * from Products", sqlConnection);
+                product.Id = Convert.ToInt32(reader["ProductID"]);
+                product.ProductName = reader["ProductName"].ToString();
+                product.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
+                product.UnitsInStock = Convert.ToInt32(reader["UnitsInStock"]);
+                product.CategoryId = Convert.ToInt32(reader["CategoryID"]);
 
-                    var reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        Product product = new Product();
-
-                        product.Id = Convert.ToInt32(reader["ProductId"]);
-                        product.ProductName = reader["ProductName"].ToString();
-                        product.UnitPrice = Convert.ToDecimal(reader["UnitPrice"]);
-                        product.UnitsInStock = Convert.ToInt32(reader["UnitsInStock"]);
-                        product.CategoryId = Convert.ToInt32(reader["CategoryID"]);
-
-                        products.Add(product);
-
-                    }
-
-                    sqlConnection.Close();
-
-                    return products;
-                }
-                catch (Exception ex)
-                {
-                    throw;
-                }
-
+                products.Add(product);
             }
+            connection.Close();
+            return products;
+
         }
 
         #region 27 April Questions

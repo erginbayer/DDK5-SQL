@@ -12,7 +12,7 @@ namespace northwindSQL_CSharp.Manager
     internal class SupplierManager
     {
 
-        public List<Supplier> GetAllProducts()
+        public List<Supplier> GetAllSuppliers()
         {
             List<Supplier> suppliers = new List<Supplier>();
 
