@@ -20,3 +20,14 @@ C:\Users\z004j86z\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CS
 C:\Users\z004j86z\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\obj\Debug\northwindSQL-CSharp.csproj.CopyComplete
 C:\Users\z004j86z\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\obj\Debug\northwindSQL-CSharp.exe
 C:\Users\z004j86z\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\obj\Debug\northwindSQL-CSharp.pdb
+C:\Users\ABRA\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\bin\Debug\northwindSQL-CSharp.exe.config
+C:\Users\ABRA\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\bin\Debug\northwindSQL-CSharp.exe
+C:\Users\ABRA\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\bin\Debug\northwindSQL-CSharp.pdb
+C:\Users\ABRA\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\bin\Debug\System.Data.SqlClient.dll
+C:\Users\ABRA\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\bin\Debug\System.Data.SqlClient.xml
+C:\Users\ABRA\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\obj\Debug\northwindSQL-CSharp.csproj.AssemblyReference.cache
+C:\Users\ABRA\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\obj\Debug\northwindSQL-CSharp.csproj.SuggestedBindingRedirects.cache
+C:\Users\ABRA\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\obj\Debug\northwindSQL-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\ABRA\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\obj\Debug\northwindSQL-CSharp.csproj.CopyComplete
+C:\Users\ABRA\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\obj\Debug\northwindSQL-CSharp.exe
+C:\Users\ABRA\Desktop\DDK5-SQL\Northwind\northwindSQL-CSharp\northwindSQL-CSharp\obj\Debug\northwindSQL-CSharp.pdb

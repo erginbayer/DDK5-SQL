@@ -69,7 +69,8 @@ namespace northwindSQL_CSharp
 
 
             //var allProducts = productManager.GetAllProducts();
-            var getProducts = productManager.GetProduct("Select * From Products Where UnitPrice<20");
+            var getProducts = productManager.GetProduct("Select * From Products Inner Join Categories on Products.CategoryID = Categories.CategoryID");
+            productSort(getProducts); 
             //var allOrders = orderManager.GetAllOrders();
             //var getOrders = orderManager.GetOrders("Select * From Orders Where EmployeeID = 4");
             //var getGermanyOrders = orderManager.GetCountryGermanyOrders();
